@@ -1,0 +1,15 @@
+<div class="container clearfix" ng-controller="ListArtistsController">
+    <div class="container">
+        <h1>All Artists</h1>
+        <div class="row">
+            <div class="col-md-4 pull-right">
+                <div search-artists class="pull-right" search="search" />
+            </div>
+        </div>
+        <div class="row" ng-repeat="row in artists.range()">
+            <div class="col-md-4 text-center" ng-repeat="artist in artists.slice(row, row + 3) | filter: search">
+                <div artist-home-directive art="artist" />
+            </div>
+        </div>
+    </div>
+</div>

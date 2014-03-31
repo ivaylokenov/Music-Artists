@@ -1,0 +1,60 @@
+<div class="container clearfix" ng-controller="EditAlbumsController" id="main-container">
+    <h1>Album</h1>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <form name="newAlbumForm" class="form-horizontal">
+                <fieldset>
+                    <legend>Main information</legend>
+                    <div class="form-group">
+                        <label for="name" class="col-lg-3 control-label">Name</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control validity" id="name" placeholder="Name" required ng-model="album.name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="image" class="col-lg-3 control-label">Image URL</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control validity" id="image" placeholder="Image URL" required ng-pattern="/\.(gif|jpg|jpeg|tiff|png)$/i" ng-model="album.image">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="created" class="col-lg-3 control-label">Released</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control validity" id="created" placeholder="Year" required ng-model="album.year">
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Additional information</legend>
+                    <div class="form-group">
+                        <label for="location" class="col-lg-3 control-label">Songs</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" id="location" placeholder="Songs" ng-model="album.songs">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="albums" class="col-lg-3 control-label">Price</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" id="albums" placeholder="Price" ng-model="album.price">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="singles" class="col-lg-3 control-label">Status</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" id="singles" placeholder="Status (can be 1, 2 or 3)" ng-model="album.status">
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="pull-right">
+                    <button class="btn btn-default" ng-disabled="newAlbumForm.$invalid" ng-click="saveAlbum(album, newAlbumForm)">Save</button>
+                    <button class="btn btn-default" ng-click="cancelEdit()">Cancel</button>
+                </div>
+            </form>
+            <button class="btn btn-default" ng-click="toTop()">Back to top</button>
+        </div>
+        <div class="col-md-6 image-container">
+            <img ng-src="{{album.image}}" src="" />
+        </div>
+    </div>
+</div>

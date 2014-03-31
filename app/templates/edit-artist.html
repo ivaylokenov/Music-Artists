@@ -1,0 +1,60 @@
+<div class="container clearfix" ng-controller="EditArtistController" id="main-container">
+    <h1>Artist</h1>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <form name="newArtistForm" class="form-horizontal">
+                <fieldset>
+                    <legend>Main information</legend>
+                    <div class="form-group">
+                        <label for="name" class="col-lg-3 control-label">Name</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control validity" id="name" placeholder="Name" required ng-model="artist.name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="image" class="col-lg-3 control-label">Image URL</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control validity" id="image" placeholder="Image URL" required ng-pattern="/\.(gif|jpg|jpeg|tiff|png)$/i" ng-model="artist.image">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="created" class="col-lg-3 control-label">Since</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control validity" id="created" placeholder="Date (dd/mm/yyyy)" required ng-pattern="/\d\d/\d\d/\d\d\d\d/" ng-model="artist.created">
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Additional information</legend>
+                    <div class="form-group">
+                        <label for="location" class="col-lg-3 control-label">Location</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" id="location" placeholder="Location" ng-model="artist.additionalInformation.location">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="albums" class="col-lg-3 control-label">Albums</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" id="albums" placeholder="Albums" ng-model="artist.additionalInformation.albums">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="singles" class="col-lg-3 control-label">Singles</label>
+                        <div class="col-lg-9">
+                            <input type="text" class="form-control" id="singles" placeholder="Singles" ng-model="artist.additionalInformation.singles">
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="pull-right">
+                    <button class="btn btn-default" ng-disabled="newArtistForm.$invalid" ng-click="saveArtist(artist, newArtistForm)">Save</button>
+                    <button class="btn btn-default" ng-click="cancelEdit()">Cancel</button>
+                </div>
+            </form>
+            <button class="btn btn-default" ng-click="toTop()">Back to top</button>
+        </div>
+        <div class="col-md-6 image-container">
+            <img ng-src="{{artist.image}}" src="" />
+        </div>
+    </div>
+</div>

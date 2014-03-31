@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h3><strong>{{album.name | uppercase}}</strong></h3>
+            <p>
+                <strong>Price:</strong> {{album.price | currency: $}}
+            </p>
+            <p>
+                <strong>Year:</strong> {{album.year}}
+            </p>
+            <p>
+                <strong>Songs:</strong> {{album.songs}}
+            </p>
+            <p>
+                <strong>Status:</strong> {{album.status | status}}
+            </p>
+        </div>
+        <div class="col-md-6 image-container">
+            <img class="img-thumbnail" ng-src="{{album.image}}" />
+        </div>
+    </div>
+</div>

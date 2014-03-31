@@ -1,0 +1,27 @@
+<div class="container clearfix" ng-controller="ListAlbumsController">
+    <div class="row">
+        <div class="col-md-2 big-text">
+            Search:
+        </div>
+        <div class="col-md-10">
+            <input type="text" class="form-control" ng-model="search" />
+        </div>
+    </div>
+    <br />
+    <div class="jumbotron" ng-repeat="album in albums | filter: search">
+        <h2 class="text-center">
+            <strong>
+                <a href="#/artist-details/{{album.artistId}}">{{ album.artist | uppercase }}</a>
+            </strong>
+        </h2>
+        <br />
+        <div album-details album="album" />
+        <div class="row">
+            <div class="col-md-12">
+                <p>
+                    <a class="btn btn-default btn-sm" href="#/artist-details/{{ album.artistId }}/edit-album/{{ album.id }}">Edit</a>
+                <p/>
+            </div>
+        </div>
+    </div>
+</div>

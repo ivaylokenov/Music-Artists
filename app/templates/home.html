@@ -1,0 +1,31 @@
+<div class="container clearfix" ng-controller="HomeController">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 big-text">
+                <strong>Latest Artists</strong>
+            </div>
+            <div class="col-md-6">
+                <a href="#/all-artists" class="btn btn-default pull-right">See all</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 text-center" ng-repeat="artist in artists">
+                <div artist-home-directive art="artist" />
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-6 big-text">
+                <strong>Latest Albums</strong>
+            </div>
+            <div class="col-md-6">
+                <a href="#/all-albums" class="btn btn-default pull-right">See all</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 text-center" ng-repeat="album in albums">
+                <div album-home-directive album="album" />
+            </div>
+        </div>
+    </div>
+</div>

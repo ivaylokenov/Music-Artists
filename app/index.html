@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Music Artists</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="../css/app.css" />
+</head>
+<body ng-app="musicApp" ng-controller="PageController" ng-cloak>
+<div class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="#/home" class="navbar-brand">Music Artists</a>
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="#/add-artist">Add artist</a>
+                </li>
+                <li>
+                 <a href="#/all-artists">All artists</a>
+                </li>
+                <li>
+                    <a href="#/all-albums">All albums</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div ng-view>
+
+</div>
+
+<hr />
+<footer class="text-center">
+    <small><strong>Author:</strong> {{author}}, <strong>Copyright:</strong> {{ copyright }} 2014</small>
+</footer>
+
+<script src="lib/jquery.min.js"></script>
+<script src="lib/bootstrap.min.js"></script>
+<script src="lib/angular/angular.js"></script>
+<script src="lib/angular/angular-resource.min.js"></script>
+<script src="lib/angular/angular-route.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/controllers/HomeController.js"></script>
+<script src="js/controllers/ListArtistsController.js"></script>
+<script src="js/controllers/ArtistDetailsController.js"></script>
+<script src="js/controllers/EditArtistController.js"></script>
+<script src="js/controllers/ListAlbumsController.js"></script>
+<script src="js/controllers/EditAlbumsController.js"></script>
+<script src="js/controllers/PageController.js"></script>
+<script src="js/filters/albumStatusFilter.js"></script>
+<script src="js/services/artistData.js"></script>
+<script src="js/directives/searchArtistsDirective.js"></script>
+<script src="js/directives/artistHomeDirective.js"></script>
+<script src="js/directives/albumHomeDirective.js"></script>
+<script src="js/directives/albumsDetailsDirective.js"></script>
+</body>
+</html>

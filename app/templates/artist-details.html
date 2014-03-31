@@ -1,0 +1,102 @@
+<div class="container clearfix" ng-controller="ArtistDetailsController">
+    <div class="row jumbotron">
+        <div class="col-md-6">
+            <h1>{{artist.name | uppercase}}</h1>
+            <h2><strong>Since:</strong> <span class="pull-right">{{artist.created}}</span></h2>
+            <div>
+                <p><strong>Location:</strong> <span class="pull-right">{{artist.additionalInformation.location}}</span></p>
+                <p><strong>Band members:</strong>
+                    <button class="btn btn-sm pull-right" ng-click="showAndHideMembers()">{{bandMembersShowText}}</button>
+                    <div class="well" ng-show="bandMembersShown">
+                        <ul class="list-group">
+                            <li class="list-group-item" ng-class="bandMembers" ng-class-even="evenBandMembers" ng-repeat="member in artist.additionalInformation.bandMembers">
+                                <span ng-style="customStyle">{{member}}</span>
+                            </li>
+                        </ul>
+                        <div class="row">
+                            <div class="col-md-10">
+                                <input type="text" class="form-control" ng-model="newMember" />
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-sm pull-right" ng-click="addMember(artist, newMember)">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </p>
+                <p>
+                    <strong>Records:</strong> {{artist.additionalInformation.albums}} albums and {{artist.additionalInformation.singles}} singles
+                    <button class="btn btn-sm pull-right" ng-click="showAndHideAlbums()">{{albumsShowText}}</button>
+                    <div ng-show="albumsShown">
+                        <div class="row text-center" ng-if="!artist.albums">
+                            <p>
+                                No albums information
+                            </p>
+                        </div>
+                        <div class="row" ng-if="artist.albums">
+                            <div class="col-md-6">
+                                Sort by:
+                                <select ng-model="sort">
+                                    <option value="id">None</option>
+                                    <option value="name">Name</option>
+                                    <option value="year">Year</option>
+                                    <option value="price">Price</option>
+                                    <option value="-rating">Rating</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                Search: <input type="text" ng-model="search" />
+                            </div>
+                        </div>
+                        <ul class="nav nav-tabs">
+                            <li ng-repeat="album in artist.albums | limitTo: 3 | orderBy: sort | filter: search">
+                                <a href="#album-{{album.id}}" target="_self" data-toggle="tab">{{album.name}} ({{album.rating}})</a>
+                            </li>
+                            <li ng-if="artist.albums.length > 3">
+                                <a href="#/all-albums/filter/{{artist.name}}">All</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade" ng-repeat="album in artist.albums | limitTo: 3" id="album-{{album.id}}">
+                                <div class="panel panel-default">
+                                    <div album-details album="album" />
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <p>
+                                                    <strong>Rating: </strong> {{album.rating}}
+                                                    <button class="btn btn-sm" ng-click="downAlbumRating(album)">-</button>
+                                                    <button class="btn btn-sm" ng-click="upAlbumRating(album)">+</button>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <p>
+                                                    <a class="btn btn-default btn-sm" href="#/artist-details/{{ artist.id }}/edit-album/{{ album.id }}">Edit</a>
+                                                <p/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button class="btn btn-sm pull-right" ng-click="addAlbum()">Add album</button>
+                            </div>
+                        </div>
+                    </div>
+                </p>
+                <p>
+                    <strong>Rating: </strong><span class="pull-right">{{ (4 + 4 + 4 + 4) / 5 | number: 2 }} / 5</span>
+                </p>
+                <p>
+                    <a class="btn btn-default btn-sm pull-right" href="#/edit-artist/{{ artist.id }}">Edit</a>
+                </p>
+            </div>
+        </div>
+        <div class="col-md-6 image-container">
+            <img ng-src="{{artist.image}}" alt="{{artist.name}}" />
+        </div>
+    </div>
+</div>
