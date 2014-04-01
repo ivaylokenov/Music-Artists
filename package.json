@@ -2,4 +2,5 @@
   "name": "music-artists",
   "description": "Music Artists SPA",
   "repository": "https://github.com/ivaylokenov/Music-Artists/",
+  "devDependencies": {}
 }
