@@ -35,7 +35,7 @@
                         <div class="row" ng-if="artist.albums">
                             <div class="col-md-6">
                                 Sort by:
-                                <select ng-model="sort">
+                                <select ng-model="sort.sortBy">
                                     <option value="id">None</option>
                                     <option value="name">Name</option>
                                     <option value="year">Year</option>
@@ -44,11 +44,11 @@
                                 </select>
                             </div>
                             <div class="col-md-6">
-                                Search: <input type="text" ng-model="search" />
+                                Search: <input type="text" ng-model="search.searchString" />
                             </div>
                         </div>
                         <ul class="nav nav-tabs">
-                            <li ng-repeat="album in artist.albums | limitTo: 3 | orderBy: sort | filter: search">
+                            <li ng-repeat="album in artist.albums | limitTo: 3 | orderBy: sort.sortBy | filter: search.searchString">
                                 <a href="#album-{{album.id}}" target="_self" data-toggle="tab">{{album.name}} ({{album.rating}})</a>
                             </li>
                             <li ng-if="artist.albums.length > 3">
