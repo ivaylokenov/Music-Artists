@@ -15,7 +15,7 @@ musicApp.controller('ArtistDetailsController',
 
         $scope.customStyle = {
             fontWeight: 'bold'
-        }
+        };
 
         $scope.albumsShown = false;
         $scope.albumsShowText = 'Info';
@@ -24,7 +24,13 @@ musicApp.controller('ArtistDetailsController',
         $scope.upAlbumRating = upAlbumRating;
         $scope.downAlbumRating = downAlbumRating;
 
-        $scope.sort = 'id';
+        $scope.sort = {
+            sortBy: 'id'
+        };
+
+        $scope.search = {
+            searchString: null
+        };
 
         $scope.addAlbum = addAlbum;
 
